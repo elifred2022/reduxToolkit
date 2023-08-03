@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../features/tasks/taskSlice";
 import { v4 as uuid } from "uuid"; // genera id automaticos
+import { useNavigate } from "react-router-dom"; // esto es para que una vez se carguen el formulario lo redireccione automatico al "/" y se pinte lo q se va cargando
 
 function TasksForm() {
   // const stateTasks = useSelector((state) => state.tasks);
@@ -13,6 +14,7 @@ function TasksForm() {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // esto es para que una vez se carguen el formulario lo redireccione automatico al "/" y se pinte lo q se va cargando
 
   const handleChange = (e) => {
     setTask({
@@ -29,6 +31,7 @@ function TasksForm() {
         id: uuid(),
       })
     );
+    navigate("/"); // esto es para que una vez se carguen el formulario lo redireccione automatico al "/" y se pinte lo q se va cargando
   };
 
   return (

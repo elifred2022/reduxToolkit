@@ -1,4 +1,5 @@
 //import { useSelector } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import TasksForm from "./components/TasksForm";
 import TasksList from "./components/TasksList";
@@ -9,17 +10,19 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello World</h1>
-
-      <TasksForm />
-      <TasksList />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TasksList />} />
+          <Route path="/create-task" element={<TasksForm />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
 export default App;
 
-// https://www.youtube.com/watch?v=w2rAP7d6ndg&list=WL&index=1&t=11s  min 53:09 quedamos config react router dom
+// https://www.youtube.com/watch?v=w2rAP7d6ndg&list=WL&index=1&t=11s  min 1:00.00 quedamos en funcion editar
 
 // DOCUMENTACION REDUX TOOLKIT; https://redux-toolkit.js.org/tutorials/quick-start
 
