@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
+  /*
   {
     id: "1",
     title: "task 1",
@@ -12,7 +13,8 @@ const initialState = [
     title: "task 2",
     description: "task 2 description",
     completed: false,
-  },
+  }, */
+  // EL INITIAL STATE DEBE QUEDAR VACIO PARA QUE EL ESTADO EMPIECE CERO SIN NADA
 ];
 
 export const taskSlice = createSlice({
@@ -21,6 +23,16 @@ export const taskSlice = createSlice({
   reducers: {
     addTask: (state, action) => {
       state.push(action.payload);
+    },
+    editTask: (state, action) => {
+      const { id, title, description } = action.payload;
+
+      const foundTask = state.find((task) => task.id === id);
+
+      if (foundTask) {
+        foundTask.title = title;
+        foundTask.description = description;
+      }
     },
     deleteTask: (state, action) => {
       const taskFound = state.find((task) => task.id === action.payload);
@@ -31,5 +43,5 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { addTask, deleteTask } = taskSlice.actions;
+export const { addTask, editTask, deleteTask } = taskSlice.actions;
 export default taskSlice.reducer;
